@@ -10,6 +10,8 @@ const Navbar = () => {
           <li>Contacto</li>
           <li>Reservar cancha</li>
           <li>Sobre nosotros</li>
+          <li>Iniciar sesión</li>
+          <li>Registrarse</li>
         </ul>
       </nav>
     </div>
