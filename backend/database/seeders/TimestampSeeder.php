@@ -27,8 +27,8 @@ class TimestampSeeder extends Seeder
                 'updated_at' => now(),
             ]);
 
-            // Incrementar 30 minutos
-            $datetime->addMinutes(30);
+            // Incrementar 1 hora
+            $datetime->addHour();
         }
     }
 }

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('court_id')->constrained()->onDelete('cascade');
+            $table->foreignId('court_id')->constrained();
             $table->foreignId('schedule_id')->constrained(); // Cambiar a "schedule_id"
             $table->string('status')->default('pending'); // Estatus de la reserva
             $table->unique(['court_id', 'schedule_id']); // Evitar reservas duplicadas

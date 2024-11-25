@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('schedules', function (Blueprint $table) {
             $table->id();
-            $table->timestamp('datetime'); // Fecha y hora de la reserva
+            $table->dateTime('datetime'); // Fecha y hora de la reserva
             $table->timestamps();
         });
     }
