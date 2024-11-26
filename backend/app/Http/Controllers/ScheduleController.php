@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Reservation;
+use App\Models\Schedule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Throwable;
 
-class ReservationController extends Controller
+class ScheduleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,9 @@ class ReservationController extends Controller
     public function index()
     {
         try {
-            return Reservation::all();
-        } catch (Throwable $th) {
+            $schedule = Schedule::all();
+            return response()->json($schedule, 200);
+        } catch (\Throwable $th) {
             return response()->json(['error' => $th->getMessage()], 500);
         }
     }
@@ -27,22 +27,16 @@ class ReservationController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'court_id' => 'required|exists:courts,id',
-            'schedule_id' => 'required|exists:schedules,id',
-            'status' => 'nullable|string',
+            'datetime' => 'required|date'
         ]);
 
         if ($validator->fails()) {
             return response()->json($validator->errors(), 400);
         }
         try {
-            $reservation = Reservation::create($request->all());
-
-            return response()->json([
-                "message" => "Reservacion realizada con Exito",
-                "data" => $reservation
-            ], 200);
-        } catch (Throwable $th) {
+            $schedule = Schedule::create($request->all());
+            return response()->json("El Horario Creado es $schedule->datetime", 201);
+        } catch (\Throwable $th) {
             return response()->json(['error' => $th->getMessage()], 500);
         }
     }
@@ -53,12 +47,9 @@ class ReservationController extends Controller
     public function show(string $id)
     {
         try {
-            $reservation = Reservation::findOrFail($id);
-            $reservation->load(['court', 'schedule']);
-            return response()->json([
-                "data" => $reservation
-            ], 200);
-        } catch (Throwable $th) {
+            $schedule = Schedule::findOrFail($id);
+            return response()->json($schedule);
+        } catch (\Throwable $th) {
             return response()->json(['error' => $th->getMessage()], 500);
         }
     }
@@ -70,27 +61,24 @@ class ReservationController extends Controller
     {
         // Validar los datos recibidos
         $validator = Validator::make($request->all(), [
-            'court_id' => 'nullable|exists:courts,id', // ID de la cancha
-            'schedule_id' => 'nullable|exists:schedules,id', // ID del horario
-            'status' => 'nullable|string|in:pending,confirmed,canceled', // Estado válido
+            "datetime" => "date"
         ]);
 
         if ($validator->fails()) {
             return response()->json($validator->errors(), 400);
         }
-
         try {
             // Buscar la reserva por ID
-            $reservation = Reservation::findOrFail($id);
+            $schedule = Schedule::findOrFail($id);
 
-            // Actualizar los campos de la reserva
-            $reservation->update($request->all());
+            // Actualizar los campos
+            $schedule->update($request->all());
 
             return response()->json([
-                'message' => 'Reservacion actualizada con exito',
-                'data' => $reservation
+                'message' => 'Horario actualizado con exito',
+                'data' => $schedule
             ], 200);
-        } catch (Throwable $th) {
+        } catch (\Throwable $th) {
             return response()->json([
                 'error' => $th->getMessage()
             ], 500);
@@ -104,15 +92,15 @@ class ReservationController extends Controller
     {
         try {
             // Buscar la reserva por ID
-            $reservation = Reservation::findOrFail($id);
+            $schedule = Schedule::findOrFail($id);
 
-            // Eliminar la reserva
-            $reservation->delete();
+            // Eliminar el horario
+            $schedule->delete();
 
             return response()->json([
-                'message' => 'Reservacion eliminada con exito'
+                'message' => 'Horario eliminado con exito'
             ], 200);
-        } catch (Throwable $th) {
+        } catch (\Throwable $th) {
             return response()->json([
                 'error' => $th->getMessage()
             ], 500);

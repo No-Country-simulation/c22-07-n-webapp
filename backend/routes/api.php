@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CourtController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\ScheduleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,3 +23,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::apiResource('/canchas', CourtController::class);
 Route::apiResource('/reservaciones', ReservationController::class);
+Route::apiResource('/horarios', ScheduleController::class);
