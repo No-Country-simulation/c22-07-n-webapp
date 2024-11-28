@@ -6,32 +6,79 @@ const Login = () => {
         email: '',
         password: '',
     })
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
 
-    const handleEmail = ()=>{
-      return  setUser(...user, user.email)
+    const handleEmail = (e)=>{
+      return  setUser({...user, email: e.target.value})
     }
 
-    const handlePassword = ()=>{
-        return setUser(...user, user.password)
+    const handlePassword = (e)=>{
+        return setUser({...user,password: e.target.value})
     }
+
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      setLoading(true);
+      setError('');
+
+      try {
+          const response = await fetch('http://tu-api-laravel.com/api/login', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(user),
+          });
+
+          const data = await response.json();
+
+          if (response.ok) {
+              console.log('Login successful:', data);
+              // Aquí puedes redirigir al usuario o guardar el token
+              localStorage.setItem('authToken', data.token);
+          } else {
+              setError(data.message || 'Error al iniciar sesión');
+          }
+      } catch (error) {
+          setError('Error de conexión con el servidor');
+      } finally {
+          setLoading(false);
+      }
+  };
   return (
     <div>
-        <form>
-            <label htmlFor="">Email</label>
-            <input type="email" name={user.email} id="" value={user.email} onChange={handleEmail}/>
+        <form onSubmit={handleSubmit}>
+            <label>Email</label>
+            <input
+                type="email"
+                name="email"
+                value={user.email}
+                onChange={handleEmail}
+            />
 
-            <label htmlFor="">Contraseña</label>
-            <input type="password" name={user.password} id="" value={user.password} onChange={handlePassword} />
+            <label>Contraseña</label>
+            <input
+                type="password"
+                name="password"
+                value={user.password}
+                onChange={handlePassword}
+            />
 
-            <input type="submit" value="Iniciar sesión" />
+            <button type="submit" disabled={loading}>
+                {loading ? 'Iniciando sesión...' : 'Iniciar sesión'}
+            </button>
 
-            <p>¿Olvidaste tu contraseña? <a href="">Haz click aqui</a></p>
-
-
+            {error && <p style={{ color: 'red' }}>{error}</p>}
         </form>
-      
+
+        <p>
+            ¿Olvidaste tu contraseña? <a href="#">Haz click aquí</a>
+        </p>
     </div>
-  )
+);
+
+
 }
 
 export default Login
