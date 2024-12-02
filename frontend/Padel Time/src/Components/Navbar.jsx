@@ -1,21 +1,35 @@
-
+import { Link } from 'react-router-dom';
+import styles from '../Styles/Navbar.module.css';
 
 const Navbar = () => {
   return (
-    <div>
-      <nav>
-        <img src="" alt="logo"/>
-        <ul>
-          <li>Inicio</li>
-          <li>Contacto</li>
-          <li>Reservar cancha</li>
-          <li>Sobre nosotros</li>
-          <li>Iniciar sesión</li>
-          <li>Registrarse</li>
-        </ul>
-      </nav>
-    </div>
-  )
-}
+    <nav className={styles.navbar}>
+      <div className={styles.logo}>
+        <img src="" alt="Logo Padel Time" />
+      </div>
+      <ul className={styles.navLinks}>
+        <li>
+          <Link to="/">Inicio</Link>
+        </li>
+        <li>
+          <Link to="/feature">Características</Link>
+        </li>
+        <li>
+          <Link to="/reservation">Reservas</Link>
+        </li>
+        <li>
+          <Link to="/contact">Contacto</Link>
+        </li>
+        <li>
+          <Link to="/login">Iniciar sesión</Link>
+        </li>
+        <li>
+          <Link to="/sign-up">Registrarse</Link>
+        </li>
+      </ul>
+    </nav>
+  );
+};
 
-export default Navbar
+export default Navbar;
+

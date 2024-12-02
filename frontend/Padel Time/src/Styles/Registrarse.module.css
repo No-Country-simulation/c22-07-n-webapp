@@ -1,0 +1,139 @@
+
+.containerRegister {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  
+  .left {
+    flex: 1; 
+    background-image: url('../assets/imagen2.png'); 
+    background-size: cover;
+    background-position: center;
+  }
+  
+  
+  .right {
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background-color: #f9f9f9;
+  }
+  
+  /* Form heading */
+  .title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Form fields */
+  .input {
+    width: 100%;
+    max-width: 300px;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  .input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+  }
+  
+  /* Submit button */
+  .button {
+    width: 100%;
+    max-width: 300px;
+    padding: 0.8rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Link for additional options */
+  .link {
+    font-size: 0.9rem;
+    color: #007bff;
+    text-decoration: none;
+    margin-top: 1rem;
+  }
+  
+  .link:hover {
+    text-decoration: underline;
+  }
+  
+  /* --- RESPONSIVENESS --- */
+  
+  /* For devices with a max width of 768px (Tablets and smaller) */
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column; /* Stacks image and form vertically */
+      height: auto; /* Allows the height to adjust dynamically */
+    }
+  
+    .left {
+      flex: none;
+      height: 40vh; /* Takes up 40% of the height on small screens */
+      background-size: cover;
+      background-position: center;
+    }
+  
+    .right {
+      flex: none;
+      padding: 1rem;
+    }
+  
+    .title {
+      font-size: 1.5rem; /* Slightly smaller title */
+    }
+  
+    .input,
+    .button {
+      max-width: 90%; /* Makes inputs take most of the available width */
+    }
+  }
+  
+  /* For devices with a max width of 480px (Mobile devices) */
+  @media (max-width: 480px) {
+    .left {
+      height: 30vh; /* Less space for the image */
+    }
+  
+    .title {
+      font-size: 1.3rem; /* Smaller title for small screens */
+      margin-bottom: 1rem;
+    }
+  
+    .input,
+    .button {
+      max-width: 100%; /* Full width on very small devices */
+      font-size: 0.9rem; /* Slightly smaller font for inputs */
+    }
+  
+    .button {
+      padding: 0.6rem; /* Smaller padding for the button */
+    }
+  
+    .link {
+      font-size: 0.8rem; /* Smaller link text */
+    }
+  }
+  

@@ -1,0 +1,46 @@
+.footer {
+    background-color: #222; 
+    color: #fff; 
+    padding: 1.5rem 2rem;
+    text-align: center;
+    border-top: 1px solid #444;
+  }
+  
+  .content {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  h3 {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+    font-weight: 400;
+  }
+  
+  .socialIcons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+  
+  .icon {
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: #fff;
+    background-image: url('https://1000marcas.net/wp-content/uploads/2019/12/Facebook.jpg');
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%; 
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .icon:hover {
+    background-color: #0056b3; 
+    transform: scale(1.1); 
+  }
+
+  

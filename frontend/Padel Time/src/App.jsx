@@ -2,6 +2,12 @@ import Navbar from "./Components/Navbar"
 import Footer from "./Components/Footer"
 import Login from "./Components/Login"
 import { Route, Routes } from "react-router-dom"
+import Home from "./Components/Home"
+import Reservas from './Components/Reservas'
+import Feature from './Components/Feature'
+import Registrarse from './Components/Registrarse'
+import Contact from "./Components/Contact"
+
 
 
 function App() {
@@ -11,7 +17,13 @@ function App() {
     <>
       <Navbar/>
       <Routes>
-        <Route path="/" element={<Login/>}/>
+
+        <Route path="/" element={<Home/>}/>
+        <Route path="/feature" element={<Feature/>}/>
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/reservation" element={<Reservas/>}/>
+        <Route path="/contact" element={<Contact/>}/>
+        <Route path="/sign-up" element={<Registrarse/>}/>
       </Routes>
      <Footer/>
 
