@@ -9,6 +9,12 @@ use Throwable;
 
 class ReservationController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['auth:api', 'role:user'])->only('store');
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -36,7 +42,12 @@ class ReservationController extends Controller
             return response()->json($validator->errors(), 400);
         }
         try {
-            $reservation = Reservation::create($request->all());
+            $reservation = Reservation::create([
+                'court_id' => $request->court_id,
+                'schedule_id' => $request->schedule_id,
+                'status' => $request->status,
+                'user_id' => auth()->user()->id, // Asignar el usuario autenticado
+            ]);
 
             return response()->json([
                 "message" => "Reservacion realizada con Exito",
