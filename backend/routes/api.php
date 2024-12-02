@@ -19,8 +19,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('/login', [AuthController::class, 'login']);
-Route::post('/register', [UserController::class, 'store']);
+Route::post('/logout', [AuthController::class, 'logout']);
 Route::get('/users', [UserController::class, 'index']);
+Route::post('/register', [UserController::class, 'store']);
 
 Route::apiResource('/canchas', CourtController::class);
 Route::apiResource('/reservaciones', ReservationController::class);

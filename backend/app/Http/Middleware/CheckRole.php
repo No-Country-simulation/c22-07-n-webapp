@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Validation\UnauthorizedException;
 use Roles;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -18,12 +19,12 @@ class CheckRole
     {
         // Verificar si el usuario está autenticado
         if (!auth()->check()) {
-            return response()->json(['error' => 'No autorizado'], 401);
+            return JsonResponse(message:'No estas autenticado', errors: 'Unauthorized', status: 401);
         }
 
         // Verificar si el usuario tiene el rol requerido
         if (auth()->user()->role !== $role) {
-            return response()->json(['error' => 'Tu rol de usuario no esta permitido'], 403); // 403 Forbidden
+            return JsonResponse(message:'Tu rol de usuario no tiene permiso para esta accion', errors: 'Forbidden', status: 403);
         }
 
         // Continuar con la solicitud si el rol coincide
