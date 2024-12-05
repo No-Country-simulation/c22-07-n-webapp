@@ -24,7 +24,7 @@
     background-color: #f9f9f9;
   }
   
-  /* Form heading */
+  
   .title {
     font-size: 1.8rem;
     font-weight: bold;
@@ -32,7 +32,7 @@
     margin-bottom: 1.5rem;
   }
   
-  /* Form fields */
+  
   .input {
     width: 100%;
     max-width: 300px;
@@ -49,7 +49,7 @@
     box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
   }
   
-  /* Submit button */
+ 
   .button {
     width: 100%;
     max-width: 300px;
@@ -68,7 +68,6 @@
     background-color: #0056b3;
   }
   
-  /* Link for additional options */
   .link {
     font-size: 0.9rem;
     color: #007bff;
@@ -80,18 +79,16 @@
     text-decoration: underline;
   }
   
-  /* --- RESPONSIVENESS --- */
-  
-  /* For devices with a max width of 768px (Tablets and smaller) */
+ 
   @media (max-width: 768px) {
-    .container {
-      flex-direction: column; /* Stacks image and form vertically */
-      height: auto; /* Allows the height to adjust dynamically */
+    .containerRegister {
+      flex-direction: column; 
+      height: auto; 
     }
   
     .left {
       flex: none;
-      height: 40vh; /* Takes up 40% of the height on small screens */
+      height: 40vh; 
       background-size: cover;
       background-position: center;
     }
@@ -102,38 +99,38 @@
     }
   
     .title {
-      font-size: 1.5rem; /* Slightly smaller title */
+      font-size: 1.5rem; 
     }
   
     .input,
     .button {
-      max-width: 90%; /* Makes inputs take most of the available width */
+      max-width: 90%; 
     }
   }
   
-  /* For devices with a max width of 480px (Mobile devices) */
+  
   @media (max-width: 480px) {
     .left {
-      height: 30vh; /* Less space for the image */
+      height: 30vh; 
     }
   
     .title {
-      font-size: 1.3rem; /* Smaller title for small screens */
+      font-size: 1.3rem; 
       margin-bottom: 1rem;
     }
   
     .input,
     .button {
-      max-width: 100%; /* Full width on very small devices */
-      font-size: 0.9rem; /* Slightly smaller font for inputs */
+      max-width: 100%; 
+      font-size: 0.9rem; 
     }
   
     .button {
-      padding: 0.6rem; /* Smaller padding for the button */
+      padding: 0.6rem; 
     }
   
     .link {
-      font-size: 0.8rem; /* Smaller link text */
+      font-size: 0.8rem;
     }
   }
   
