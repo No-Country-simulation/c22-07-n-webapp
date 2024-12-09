@@ -89,7 +89,7 @@
   
   
   @media (max-width: 768px) {
-    .container {
+    .containerLogin {
       flex-direction: column;
       height: auto;
     }
