@@ -1,6 +1,6 @@
-import { useState } from "react"
-
-
+import { useState } from "react";
+import React from 'react';
+import { useNavigate } from 'react-router-dom'; 
 import styles from '../Styles/Login.module.css';
 
 const Login = () => {
@@ -10,6 +10,7 @@ const Login = () => {
   });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate(); 
 
   const handleEmail = (e) => {
     setUser({ ...user, email: e.target.value });
@@ -25,7 +26,7 @@ const Login = () => {
     setError('');
 
     try {
-      const response = await fetch('https://padel-time-production.up.railway.app', {
+      const response = await fetch('https://padeltime.azurewebsites.net/api/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -38,6 +39,9 @@ const Login = () => {
       if (response.ok) {
         console.log('Login successful:', data);
         localStorage.setItem('authToken', data.token);
+
+        
+        navigate('/reservation');  
       } else {
         setError(data.message || 'Error al iniciar sesión');
       }

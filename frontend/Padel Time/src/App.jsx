@@ -6,7 +6,9 @@ import Home from "./Components/Home"
 import Reservas from './Components/Reservas'
 import Feature from './Components/Feature'
 import Registrarse from './Components/Registrarse'
-import Contact from "./Components/Contact"
+import Contact from "./Components/Contact";
+import React from 'react';
+import Logout from "./Components/Logout"
 
 
 
@@ -24,6 +26,7 @@ function App() {
         <Route path="/reservation" element={<Reservas/>}/>
         <Route path="/contact" element={<Contact/>}/>
         <Route path="/sign-up" element={<Registrarse/>}/>
+        <Route path="/logout" element={<Logout />} />
       </Routes>
      <Footer/>
 

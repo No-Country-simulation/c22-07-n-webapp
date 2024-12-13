@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from '../Styles/Navbar.module.css';
 
@@ -25,6 +26,9 @@ const Navbar = () => {
         </li>
         <li>
           <Link to="/sign-up">Registrarse</Link>
+        </li>
+        <li>
+          <Link to="/logout">Cerrar sesión</Link>
         </li>
       </ul>
     </nav>
